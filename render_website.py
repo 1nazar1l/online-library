@@ -8,12 +8,16 @@ def on_reload():
         autoescape=select_autoescape(['html']),
     )
 
+    with open("library/books_dict.json", "r", encoding='utf-8') as my_file:
+        books = json.load(my_file)
+    
+    books = books[:10]
+
     template = env.get_template('template.html')
-    rendered_page = template.render()
+    rendered_page = template.render(books=books)
 
     with open('index.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
-
 
 
 
