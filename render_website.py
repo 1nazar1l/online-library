@@ -21,9 +21,9 @@ def on_reload():
 
     books = list(chunked(books, 10))
     for i, books_on_page in enumerate(books, 1):
-
+        books = list(chunked(books_on_page, 2))
         template = env.get_template('template.html')
-        rendered_page = template.render(books=books_on_page, pages=pages, page_number=i)
+        rendered_page = template.render(books=books, pages=pages, page_number=i)
 
         with open(f'pages/index{i}.html', 'w', encoding="utf8") as file:
             file.write(rendered_page)
@@ -33,4 +33,4 @@ def on_reload():
 on_reload()
 server = Server()
 server.watch("template.html", on_reload)
-server.serve(root='.')
+server.serve(root='.', default_filename="pages/index1.html")
