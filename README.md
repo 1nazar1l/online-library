@@ -4,6 +4,8 @@
 
 Посмотреть пример сайта можно [здесь](https://1nazar1l.github.io/online-library/pages/index1.html).
 
+![Image alt](./static/img/example_site.png)
+
 ### Как установить
 
 
