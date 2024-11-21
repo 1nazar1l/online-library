@@ -1,9 +1,10 @@
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 import json
-from livereload import Server
 import os
-from more_itertools import chunked
 import math
+
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+from livereload import Server
+from more_itertools import chunked
 
 
 def on_reload():
@@ -12,14 +13,16 @@ def on_reload():
         autoescape=select_autoescape(['html']),
     )
 
-    with open("library/books_dict.json", "r", encoding='utf-8') as my_file:
+    with open("static/library/books_dict.json", "r", encoding='utf-8') as my_file:
         books = json.load(my_file)
 
     os.makedirs("pages", exist_ok=True)
 
-    pages = math.ceil(len(books)/10)
+    books_per_page = 10
 
-    books = list(chunked(books, 10))
+    pages = math.ceil(len(books)/books_per_page)
+
+    books = list(chunked(books, books_per_page))
     for i, books_on_page in enumerate(books, 1):
         books = list(chunked(books_on_page, 2))
         template = env.get_template('template.html')
