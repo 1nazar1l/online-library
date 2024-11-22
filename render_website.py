@@ -28,7 +28,11 @@ def on_reload():
         template = env.get_template('template.html')
         rendered_page = template.render(books=books, pages=pages, page_number=i)
 
-        with open(f'pages/index{i}.html', 'w', encoding="utf8") as file:
+        filepath = f'pages/index{i}.html'
+        if i == 1: 
+            filepath = f'pages/index.html'
+
+        with open(filepath, 'w', encoding="utf8") as file:
             file.write(rendered_page)
 
 
@@ -36,4 +40,4 @@ def on_reload():
 on_reload()
 server = Server()
 server.watch("template.html", on_reload)
-server.serve(root='.', default_filename="pages/index1.html")
+server.serve(root='.', default_filename="pages/index.html")
