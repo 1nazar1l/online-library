@@ -2,7 +2,7 @@
 
 Код с помощью которого можно создать свою мини онлайн библиотеку для того чтобы читать скачанные вами книги.
 
-Посмотреть пример сайта можно <a href="https://1nazar1l.github.io/online-library/pages/index1.html" target="_blank">здесь</a>.
+Посмотреть пример сайта можно <a href="https://1nazar1l.github.io/online-library/pages/index.html" target="_blank">здесь</a>.
 
 ![Image alt](./static/img/example_site.png)
 
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 python render_website.py
 ```
 
-Для того чтобы изменить структуру сайта нужно зайти в `template.html`. Далее в зависимости от полученных данных книги будут рендериться на страницах `index1.html`, `index2.html` и т.д. 
+Для того чтобы изменить структуру сайта нужно зайти в `template.html`. Далее в зависимости от полученных данных книги будут рендериться на страницах `index.html`, `index2.html` и т.д. 
 
 Количество страниц зависит от количества книг(10 книг на страницу). Если необходимо изменить количество книг на одну страницу нужно зайти в `render_website.py` и поменять значение `books_per_page`.
 
