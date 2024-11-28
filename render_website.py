@@ -13,7 +13,7 @@ def on_reload():
         autoescape=select_autoescape(['html']),
     )
 
-    with open("media/library/books_dict.json", "r", encoding='utf-8') as my_file:
+    with open("media/books_dict.json", "r", encoding='utf-8') as my_file:
         books = json.load(my_file)
 
     os.makedirs("pages", exist_ok=True)
