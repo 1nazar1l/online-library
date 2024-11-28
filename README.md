@@ -2,7 +2,7 @@
 
 Код с помощью которого можно создать свою мини онлайн библиотеку для того чтобы читать скачанные вами книги.
 
-Посмотреть пример сайта можно <a href="https://1nazar1l.github.io/online-library/pages/index.html" target="_blank">здесь</a>.
+Посмотреть пример сайта можно [здесь](https://1nazar1l.github.io/online-library/pages/index.html).
 
 ![Image alt](./static/img/example_site.png)
 
@@ -28,7 +28,7 @@ python render_website.py
 
 Количество страниц зависит от количества книг(10 книг на страницу). Если необходимо изменить количество книг на одну страницу нужно зайти в `render_website.py` и поменять значение `books_per_page`.
 
-Чтобы скачать много книг с сайта <a href="https://tululu.org/" target="_blank">tululu.org</a> нажмите <a href="https://github.com/1nazar1l/offline-library" target="_blank">сюда</a>.
+Чтобы скачать много книг с сайта [tululu.org](https://tululu.org/) нажмите [сюда](https://github.com/1nazar1l/offline-library).
 
 ### Цель проекта
 
