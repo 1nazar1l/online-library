@@ -5,15 +5,24 @@ import math
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from livereload import Server
 from more_itertools import chunked
+import argparse
+from pathvalidate import sanitize_filename
+import os
 
 
 def on_reload():
+    parser = argparse.ArgumentParser(description="Парсит скачанные книги")
+    parser.add_argument('--dest_folder', type=str, default="media", help="Укажите папку в которую будет сохраняться вся информация")
+    args = parser.parse_args()
+    root_folder = args.dest_folder
+
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html']),
     )
 
-    with open("media/books_dict.json", "r", encoding='utf-8') as my_file:
+    filepath = os.path.join(sanitize_filename(root_folder),"books_dict.json")
+    with open(filepath, "r", encoding='utf-8') as my_file:
         books = json.load(my_file)
 
     os.makedirs("pages", exist_ok=True)
