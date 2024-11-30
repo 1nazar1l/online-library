@@ -58,7 +58,7 @@
                 <div class="card mb-3 me-2" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="../media/{{book.img_url}}" class="img-fluid rounded-start" alt="">
+                            <img src="../media/{{book.img_url | urlencode}}" class="img-fluid rounded-start" alt="">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -69,7 +69,7 @@
                                         <span class="badge badge-secondary " style="color: rgb(77, 77, 77); background-color: lightgray;">{{genre}}</span>
                                     {% endfor %}
                                 </p>
-                                <a href="../media/{{book.book_path}}" rel="noopener noreferrer">Читать</a>
+                                <a href="../media/{{book.book_path | urlencode}}" rel="noopener noreferrer">Читать</a>
                             </div>
                         </div>
                     </div>
