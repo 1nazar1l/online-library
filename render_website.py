@@ -28,12 +28,12 @@ def on_reload():
     os.makedirs("pages", exist_ok=True)
 
     books_per_page = 10
-
+    books_in_row = 2
     pages = math.ceil(len(books)/books_per_page)
-
     books = list(chunked(books, books_per_page))
+
     for i, books_on_page in enumerate(books, 1):
-        books = list(chunked(books_on_page, 2))
+        books = list(chunked(books_on_page, books_in_row))
         template = env.get_template('template.html')
         rendered_page = template.render(books=books, pages=pages, page_number=i)
 
