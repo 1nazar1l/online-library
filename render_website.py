@@ -7,7 +7,6 @@ from livereload import Server
 from more_itertools import chunked
 import argparse
 from pathvalidate import sanitize_filename
-import os
 
 
 def on_reload():
