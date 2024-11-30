@@ -16,67 +16,83 @@
     <div class="container" style="margin: 0 auto;">
         <nav aria-label="Page navigation example mb-3" class="mt-5 d-flex justify-content-center">
             <ul class="pagination">
+
                 {% if page_number==1 %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
+
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+
                 {% else %}
+
                     {% if page_number-1==1 %}
-                    <li class="page-item"><a class="page-link" href="../pages/index.html">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="../pages/index.html">Previous</a></li>
                     {% else %}
-                    <li class="page-item"><a class="page-link" href="../pages/index{{page_number-1}}.html">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="../pages/index{{page_number-1}}.html">Previous</a></li>
                     {% endif %}
+
                 {% endif %}
+
                 {% for page in range(1, pages+1) %}
+
                     {% if page==page_number %}
+
                         {% if page==1 %}
-                        <li class="page-item"><a class="page-link" href="../pages/index.html" style="background-color: blue; color: whitesmoke;">{{page}}</a></li>
+                            <li class="page-item"><a class="page-link" href="../pages/index.html" style="background-color: blue; color: whitesmoke;">{{page}}</a></li>
                         {% else %}
-                        <li class="page-item"><a class="page-link" href="../pages/index{{page}}.html" style="background-color: blue; color: whitesmoke;">{{page}}</a></li>
+                            <li class="page-item"><a class="page-link" href="../pages/index{{page}}.html" style="background-color: blue; color: whitesmoke;">{{page}}</a></li>
                         {% endif %}
+
                     {% else %}
+
                         {% if page==1 %}
-                        <li class="page-item"><a class="page-link" href="../pages/index.html">{{page}}</a></li>
+                            <li class="page-item"><a class="page-link" href="../pages/index.html">{{page}}</a></li>
                         {% else %}
-                        <li class="page-item"><a class="page-link" href="../pages/index{{page}}.html">{{page}}</a></li>
+                            <li class="page-item"><a class="page-link" href="../pages/index{{page}}.html">{{page}}</a></li>
                         {% endif %}
+
                     {% endif %}
+
                 {% endfor %}
+
                 {% if page_number==pages %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-                </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                    </li>
                 {% else %}
-                <li class="page-item"><a class="page-link" href="../pages/index{{page_number+1}}.html">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="../pages/index{{page_number+1}}.html">Next</a></li>
                 {% endif %}
+
             </ul>
         </nav>
+
         {% for book_pair in books %}
-        <div class="row">
-            {% for book in book_pair %}
-            <div class="col">
-                <div class="card mb-3 me-2" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="../media/{{book.img_url | urlencode}}" class="img-fluid rounded-start" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{book.title}}</h5>
-                                <p class="card-text">{{book.author}}</p>
-                                <p>
-                                    {% for genre in book.genres %}
-                                        <span class="badge badge-secondary " style="color: rgb(77, 77, 77); background-color: lightgray;">{{genre}}</span>
-                                    {% endfor %}
-                                </p>
-                                <a href="../media/{{book.book_path | urlencode}}" rel="noopener noreferrer" target="_blank">Читать</a>
+            <div class="row">
+                {% for book in book_pair %}
+                    <div class="col">
+                        <div class="card mb-3 me-2" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="../media/{{book.img_url | urlencode}}" class="img-fluid rounded-start" alt="">
+                                </div>
+                                
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{book.title}}</h5>
+                                        <p class="card-text">{{book.author}}</p>
+                                        <p>
+                                            {% for genre in book.genres %}
+                                                <span class="badge badge-secondary " style="color: rgb(77, 77, 77); background-color: lightgray;">{{genre}}</span>
+                                            {% endfor %}
+                                        </p>
+                                        <a href="../media/{{book.book_path | urlencode}}" rel="noopener noreferrer" target="_blank">Читать</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endfor %}
     </div>
     <script src="../static/bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
